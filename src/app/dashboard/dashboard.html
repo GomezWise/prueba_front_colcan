@@ -1,0 +1,168 @@
+
+<div class="container py-5" *ngIf="userForm">
+  <div class="card shadow-sm">
+    <div class="card-header bg-primary text-white">
+      <h2 class="mb-0">Crear Nuevo Usuario</h2>
+      <a routerLink="/listado" class="btn btn-secondary">Listado</a>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="userForm" (ngSubmit)="guardar()">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <div class="form-floating">
+              <input formControlName="name" class="form-control" id="nameInput" required />
+              <label for="nameInput" class="text-muted">Nombre</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-3 mt-2">
+          <div class="col-md-6">
+            <div class="form-floating">
+              <input formControlName="username" class="form-control" id="usernameInput" />
+              <label for="usernameInput" class="text-muted">Usuario</label>
+            </div>
+            <div *ngIf="userForm.get('username')?.invalid && userForm.get('username')?.touched" class="text-danger mt-1">
+              El usuario es requerido.
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-floating">
+              <input formControlName="email" type="email" class="form-control" id="emailInput" />
+              <label for="emailInput" class="text-muted">Email</label>
+            </div>
+            <div *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched" class="text-danger mt-1">
+              <span *ngIf="userForm.get('email')?.errors?.['required']">El email es requerido.</span>
+              <span *ngIf="userForm.get('email')?.errors?.['email']">El formato del email es inválido.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-3 mt-2">
+          <div class="col-md-6">
+            <div class="form-floating">
+              <input formControlName="phone" class="form-control" id="phoneInput" />
+              <label for="phoneInput" class="text-muted">Teléfono</label>
+            </div>
+             <div *ngIf="userForm.get('phone')?.invalid && userForm.get('phone')?.touched" class="text-danger mt-1">
+              El teléfono es requerido.
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-floating">
+              <input formControlName="website" class="form-control" id="websiteInput" />
+              <label for="websiteInput" class="text-muted">Website</label>
+            </div>
+             <div *ngIf="userForm.get('website')?.invalid && userForm.get('website')?.touched" class="text-danger mt-1">
+              El website es requerido.
+            </div>
+          </div>
+        </div>
+
+        <div class="card mt-4" formGroupName="address">
+          <div class="card-header bg-light">
+            <h4 class="mb-0">Dirección</h4>
+          </div>
+          <div class="card-body">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input formControlName="street" class="form-control" id="streetInput" />
+                  <label for="streetInput" class="text-muted">Calle</label>
+                </div>
+                <div *ngIf="userForm.get('address.street')?.invalid && userForm.get('address.street')?.touched" class="text-danger mt-1">
+                  La calle es requerida.
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input formControlName="suite" class="form-control" id="suiteInput" />
+                  <label for="suiteInput" class="text-muted">Suite</label>
+                </div>
+                <div *ngIf="userForm.get('address.suite')?.invalid && userForm.get('address.suite')?.touched" class="text-danger mt-1">
+                  La suite es requerida.
+                </div>
+              </div>
+            </div>
+
+            <div class="row g-3 mt-2">
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input formControlName="city" class="form-control" id="cityInput" />
+                  <label for="cityInput" class="text-muted">Ciudad</label>
+                </div>
+                <div *ngIf="userForm.get('address.city')?.invalid && userForm.get('address.city')?.touched" class="text-danger mt-1">
+                  La ciudad es requerida.
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input formControlName="zipcode" class="form-control" id="zipcodeInput" />
+                  <label for="zipcodeInput" class="text-muted">Código Postal</label>
+                </div>
+                <div *ngIf="userForm.get('address.zipcode')?.invalid && userForm.get('address.zipcode')?.touched" class="text-danger mt-1">
+                  El código postal es requerido.
+                </div>
+              </div>
+            </div>
+
+            <div class="row g-3 mt-2" formGroupName="geo">
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input formControlName="lat" class="form-control" id="latInput" />
+                  <label for="latInput" class="text-muted">Latitud</label>
+                </div>
+                <div *ngIf="userForm.get('address.geo.lat')?.invalid && userForm.get('address.geo.lat')?.touched" class="text-danger mt-1">
+                  La latitud es requerida.
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input formControlName="lng" class="form-control" id="lngInput" />
+                  <label for="lngInput" class="text-muted">Longitud</label>
+                </div>
+                <div *ngIf="userForm.get('address.geo.lng')?.invalid && userForm.get('address.geo.lng')?.touched" class="text-danger mt-1">
+                  La longitud es requerida.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mt-4" formGroupName="company">
+          <div class="card-header bg-light">
+            <h4 class="mb-0">Compañía</h4>
+          </div>
+          <div class="card-body">
+            <div class="form-floating mb-3">
+              <input formControlName="name" class="form-control" id="companyNameInput" />
+              <label for="companyNameInput" class="text-muted">Nombre</label>
+            </div>
+            <div *ngIf="userForm.get('company.name')?.invalid && userForm.get('company.name')?.touched" class="text-danger mt-1">
+              El nombre de la compañía es requerido.
+            </div>
+            <div class="form-floating mb-3">
+              <input formControlName="catchPhrase" class="form-control" id="catchPhraseInput" />
+              <label for="catchPhraseInput" class="text-muted">Frase</label>
+            </div>
+            <div *ngIf="userForm.get('company.catchPhrase')?.invalid && userForm.get('company.catchPhrase')?.touched" class="text-danger mt-1">
+              La frase es requerida.
+            </div>
+            <div class="form-floating">
+              <input formControlName="bs" class="form-control" id="bsInput" />
+              <label for="bsInput" class="text-muted">BS</label>
+            </div>
+            <div *ngIf="userForm.get('company.bs')?.invalid && userForm.get('company.bs')?.touched" class="text-danger mt-1">
+              El BS es requerido.
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4 d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

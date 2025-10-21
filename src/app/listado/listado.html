@@ -1,0 +1,135 @@
+@for (item of Datausers; track $index) {
+  <div class="container py-5">
+    <div class="card shadow-sm">
+      <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+        <h2 class="mb-0">Detalle del Usuario #{{ $index + 1 }}</h2>
+        <a [routerLink]="['/formulario', item.id]" class="btn btn-light btn-sm">
+          Ver Detalle
+        </a>
+      </div>
+
+      <div class="card-body">
+     
+        <div class="row g-3">
+          <div class="col-md-6">
+            <div class="form-floating">
+              <input [value]="item.name" class="form-control" id="nameInput{{ $index }}" readonly />
+              <label for="nameInput{{ $index }}" class="text-muted">Nombre</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-3 mt-2">
+          <div class="col-md-6">
+            <div class="form-floating">
+              <input [value]="item.username" class="form-control" id="usernameInput{{ $index }}" readonly />
+              <label for="usernameInput{{ $index }}" class="text-muted">Usuario</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-floating">
+              <input [value]="item.email" type="email" class="form-control" id="emailInput{{ $index }}" readonly />
+              <label for="emailInput{{ $index }}" class="text-muted">Email</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-3 mt-2">
+          <div class="col-md-6">
+            <div class="form-floating">
+              <input [value]="item.phone" class="form-control" id="phoneInput{{ $index }}" readonly />
+              <label for="phoneInput{{ $index }}" class="text-muted">Teléfono</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-floating">
+              <input [value]="item.website" class="form-control" id="websiteInput{{ $index }}" readonly />
+              <label for="websiteInput{{ $index }}" class="text-muted">Website</label>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="card mt-4">
+          <div class="card-header bg-light">
+            <h4 class="mb-0">Dirección</h4>
+          </div>
+          <div class="card-body">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input [value]="item.address.street" class="form-control" id="streetInput{{ $index }}" readonly />
+                  <label for="streetInput{{ $index }}" class="text-muted">Calle</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input [value]="item.address.suite" class="form-control" id="suiteInput{{ $index }}" readonly />
+                  <label for="suiteInput{{ $index }}" class="text-muted">Suite</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row g-3 mt-2">
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input [value]="item.address.city" class="form-control" id="cityInput{{ $index }}" readonly />
+                  <label for="cityInput{{ $index }}" class="text-muted">Ciudad</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input [value]="item.address.zipcode" class="form-control" id="zipcodeInput{{ $index }}" readonly />
+                  <label for="zipcodeInput{{ $index }}" class="text-muted">Código Postal</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row g-3 mt-2">
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input [value]="item.address.geo.lat" class="form-control" id="latInput{{ $index }}" readonly />
+                  <label for="latInput{{ $index }}" class="text-muted">Latitud</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input [value]="item.address.geo.lng" class="form-control" id="lngInput{{ $index }}" readonly />
+                  <label for="lngInput{{ $index }}" class="text-muted">Longitud</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="card mt-4">
+          <div class="card-header bg-light">
+            <h4 class="mb-0">Compañía</h4>
+          </div>
+          <div class="card-body">
+            <div class="form-floating mb-3">
+              <input [value]="item.company.name" class="form-control" id="companyNameInput{{ $index }}" readonly />
+              <label for="companyNameInput{{ $index }}" class="text-muted">Nombre</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input [value]="item.company.catchPhrase" class="form-control" id="catchPhraseInput{{ $index }}" readonly />
+              <label for="catchPhraseInput{{ $index }}" class="text-muted">Frase</label>
+            </div>
+            <div class="form-floating">
+              <input [value]="item.company.bs" class="form-control" id="bsInput{{ $index }}" readonly />
+              <label for="bsInput{{ $index }}" class="text-muted">BS</label>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="mt-4 d-flex justify-content-end">
+          <a [routerLink]="['/formulario', item.id]" class="btn btn-outline-primary">
+            Ver Detalle
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+}
