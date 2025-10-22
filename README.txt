@@ -23,6 +23,3 @@ http://localhost:4200/formulario/:id
 en dado caso de que algun boton no redirija, darle click a la ruta y oprimir enter
 de ese modo ingresara o con la ruta que indico
 
-PDTA: El objetivo de guardar no lo pude lograr completo, solo validaciones,
-
-demas objetivos se realizaron correctamente pueden revisar con gusto
